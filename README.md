@@ -1,4 +1,4 @@
-# 🔍 Distinguishing Real from Generative AI Images via Linear Algebra (SVD)
+# Distinguishing Real from Generative AI Images via Linear Algebra (SVD)
 
 An explainable, zero-parameter mathematical approach to detecting generative AI artifacts using **Singular Value Decomposition (SVD)** and spectral energy distributions — without relying on deep neural networks.
 
