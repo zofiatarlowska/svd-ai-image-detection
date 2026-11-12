@@ -37,7 +37,7 @@ $$
 
 ---
 
-## he 3-Feature Voting Classifier
+## The 3-Feature Voting Classifier
 Without training parameters or gradient descent, a voting heuristic was formulated using three spectral properties:
 1. **Mid-frequency sum:** $\sum_{i=100}^{800} \sigma_i$
 2. **Energy threshold rank:** $k$ such that $E_k \ge 0.95$
