@@ -15,24 +15,29 @@ Generative models (diffusion models, GANs) optimize pixel distributions across h
 
 Each grayscale image is represented as a matrix $A \in \mathbb{R}^{m \times n}$. By the Spectral Theorem on symmetric matrices ($A^T A$), the SVD is formulated as:
 
-$$A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i u_i v_i^T$$
+$$
+A = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i u_i v_i^T
+$$
 
 Where:
 - $\Sigma = \text{diag}(\sigma_1, \sigma_2, \dots, \sigma_r)$ with $\sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_r \ge 0$.
 - Cumulative Frobenius energy retained by rank-$k$ truncation:
-  $$E_k = \frac{\sum_{i=1}^k \sigma_i^2}{\|A\|_F^2} = \frac{\sum_{i=1}^k \sigma_i^2}{\sum_{i=1}^r \sigma_i^2}$$
+
+$$
+E_k = \frac{\sum_{i=1}^k \sigma_i^2}{\|A\|_F^2} = \frac{\sum_{i=1}^k \sigma_i^2}{\sum_{i=1}^r \sigma_i^2}
+$$
 
 ---
 
 ## Key Findings
 
-1. **Energy Dispersion:** AI images require significantly more singular values to preserve 95% and 99% of Frobenius energy ($k_{95\%} \approx 18.1$ for AI vs $10.7$ for Real; $k_{99\%} \approx 115.4$ vs $72.4$).
+1. **Energy Dispersion:** AI images require significantly more singular values to preserve 95% and 99% of Frobenius energy ($k \approx 18.1$ for AI vs $10.7$ for Real at 95% energy; $k \approx 115.4$ vs $72.4$ at 99% energy).
 2. **Mid-Spectrum Elevation:** On a logarithmic scale, AI singular values form a distinct elevated shelf across indices 100–800.
 3. **Tail Regularity:** Real photographs feature noisy, irregular sensor shot noise in the spectral tail (last 30 SVs), whereas generative models produce smoothed, regularized micro-textures.
 
 ---
 
-## The 3-Feature Voting Classifier
+## he 3-Feature Voting Classifier
 Without training parameters or gradient descent, a voting heuristic was formulated using three spectral properties:
 1. **Mid-frequency sum:** $\sum_{i=100}^{800} \sigma_i$
 2. **Energy threshold rank:** $k$ such that $E_k \ge 0.95$
